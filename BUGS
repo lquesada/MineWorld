@@ -1,0 +1,5 @@
+Known bugs:
+
+- Collisions are not calculated or resolved correctly. In particular, when the framerate is low and the player can "skip" a block between frames, it will do so.
+- Jumps look wrong. In particular, when the framerate is low, the player jumps higher.
+
