@@ -1,0 +1,15 @@
+libs.CopyLibs.classpath=\
+    ${base}/CopyLibs/org-netbeans-modules-java-j2seproject-copylibstask.jar
+libs.LWJGL-2.8.2.classpath=\
+    ${base}/LWJGL-2.8.2/jinput.jar:\
+    ${base}/LWJGL-2.8.2/lwjgl.jar:\
+    ${base}/LWJGL-2.8.2/lwjgl_util.jar
+libs.LWJGL-2.8.2.javadoc=\
+    ${base}/LWJGL-2.8.2/lwjgl-docs-2.8.2.zip!/javadoc/
+libs.LWJGL-2.8.2.src=\
+    ${base}/LWJGL-2.8.2/generated/:\
+    ${base}/LWJGL-2.8.2/java/
+libs.slick-util.classpath=\
+    ${base}/slick-util/slick-util.jar
+libs.slick-util.src=\
+    ${base}/slick-util/org/
