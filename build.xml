@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. --><project basedir="." default="build" name="MineWorld">
+    <property environment="env"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="MineWorld.classpath">
+        <pathelement location="bin"/>
+        <pathelement location="lib/slick-util/slick-util.jar"/>
+        <pathelement location="lib/lwjgl-2.9.0/jar/jinput.jar"/>
+        <pathelement location="lib/lwjgl-2.9.0/jar/lwjgl_util.jar"/>
+        <pathelement location="lib/lwjgl-2.9.0/jar/lwjgl.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+        <delete dir="MineWorld_lib"/>
+        <delete file="MineWorld.jar"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project,create-run-jar" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="MineWorld.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+    <target name="MineWorldLauncher">
+        <java classname="com.elezeta.mineworld.MineWorldLauncher" failonerror="true" fork="yes">
+            <jvmarg line="-Djava.library.path=lib/lwjgl-2.9.0/native/linux"/>
+            <classpath refid="MineWorld.classpath"/>
+        </java>
+    </target>
+    <target depends="build-project" name="create-run-jar">
+        <jar destfile="MineWorld.jar" filesetmanifest="mergewithoutmain">
+            <manifest>
+                <attribute name="Main-Class" value="com.elezeta.mineworld.MineWorldLauncher"/>
+                <attribute name="Class-Path" value="."/>
+            </manifest>
+            <fileset dir="bin"/>
+            <zipfileset excludes="META-INF/*.SF" src="lib/slick-util/slick-util.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="lib/lwjgl-2.9.0/jar/jinput.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="lib/lwjgl-2.9.0/jar/lwjgl_util.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="lib/lwjgl-2.9.0/jar/lwjgl.jar"/>
+        </jar>
+        <delete dir="MineWorld_lib"/>
+        <mkdir dir="MineWorld_lib"/>
+        <copy file="lib/slick-util/slick-util.jar" todir="MineWorld_lib"/>
+        <copy file="lib/lwjgl-2.9.0/native/linux/libjinput-linux64.so" todir="MineWorld_lib"/>
+        <copy file="lib/lwjgl-2.9.0/native/linux/libjinput-linux.so" todir="MineWorld_lib"/>
+        <copy file="lib/lwjgl-2.9.0/native/linux/liblwjgl64.so" todir="MineWorld_lib"/>
+        <copy file="lib/lwjgl-2.9.0/native/linux/liblwjgl.so" todir="MineWorld_lib"/>
+        <copy file="lib/lwjgl-2.9.0/native/linux/libopenal64.so" todir="MineWorld_lib"/>
+        <copy file="lib/lwjgl-2.9.0/native/linux/libopenal.so" todir="MineWorld_lib"/>
+        <copy file="lib/lwjgl-2.9.0/native/macosx/libjinput-osx.jnilib" todir="MineWorld_lib"/>
+        <copy file="lib/lwjgl-2.9.0/native/macosx/liblwjgl.jnilib" todir="MineWorld_lib"/>
+        <copy file="lib/lwjgl-2.9.0/native/macosx/openal.dylib" todir="MineWorld_lib"/>
+        <copy file="lib/lwjgl-2.9.0/native/windows/jinput-dx8_64.dll" todir="MineWorld_lib"/>
+        <copy file="lib/lwjgl-2.9.0/native/windows/jinput-dx8.dll" todir="MineWorld_lib"/>
+        <copy file="lib/lwjgl-2.9.0/native/windows/jinput-raw_64.dll" todir="MineWorld_lib"/>
+        <copy file="lib/lwjgl-2.9.0/native/windows/jinput-raw.dll" todir="MineWorld_lib"/>
+        <copy file="lib/lwjgl-2.9.0/native/windows/lwjgl64.dll" todir="MineWorld_lib"/>
+        <copy file="lib/lwjgl-2.9.0/native/windows/lwjgl.dll" todir="MineWorld_lib"/>
+        <copy file="lib/lwjgl-2.9.0/native/windows/OpenAL32.dll" todir="MineWorld_lib"/>
+        <copy file="lib/lwjgl-2.9.0/native/windows/OpenAL64.dll" todir="MineWorld_lib"/>
+
+    </target>
+
+</project>
