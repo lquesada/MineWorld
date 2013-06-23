@@ -85,7 +85,7 @@ public abstract class Resources {
     public static void load() throws FontFormatException, IOException {
         infoFont = loadFont("com/elezeta/mineworld/resources/LucidaTypewriterRegular.ttf",false,10);
         terrainTextureAtlas = loadTexture("com/elezeta/mineworld/resources/terrain.png");
-        terrainTextures = sliceTexture(terrainTextureAtlas,64);
+        terrainTextures = sliceTexture(terrainTextureAtlas,16);
         guiTextureAtlas = loadTexture("com/elezeta/mineworld/resources/gui.png");
         guiTextures = new Texture[2];
         guiTextures[GID.CROSSHAIR] = new Texture(0f/16f,0f/16f,8f/16f,8f/16f);

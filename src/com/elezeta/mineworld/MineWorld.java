@@ -102,7 +102,7 @@ class MineWorld {
 
     private void initDisplay(int width, int height) throws LWJGLException {
         Display.setDisplayMode(new DisplayMode(width,height));
-        Display.setTitle("SpaceThrill");
+        Display.setTitle("MineWorld");
         Display.create();
         Display.setVSyncEnabled(false);
 
